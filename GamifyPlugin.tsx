@@ -1,7 +1,8 @@
 import type { Plugin, PluginAPI } from '../pluginEngine';
 import type { Task } from '../../lib/MarkdownParser';
 import { useTodoStore } from '../../store/useTodoStore';
-import { FamilyData, LOOT_TABLE, STORY_CHAPTERS } from './types';
+import { LOOT_TABLE, STORY_CHAPTERS } from './gamifyTypes';
+import type { FamilyData, StoryChapter } from './gamifyTypes';
 import { LeaderboardWidget, StoryJournalWidget } from './components/GamifyWidgets';
 
 export class GamifyPlugin implements Plugin {
@@ -228,7 +229,7 @@ export class GamifyPlugin implements Plugin {
       alert(`📜 HEAR YE! You have reached Rank ${user.level}!`);
       
       // Check for Story Unlocks
-      const newChapter = STORY_CHAPTERS.find(c => c.requiredLevel === user.level);
+      const newChapter = STORY_CHAPTERS.find((c: StoryChapter) => c.requiredLevel === user.level);
       if (newChapter && !user.unlockedChapterIds.includes(newChapter.id)) {
         user.unlockedChapterIds.push(newChapter.id);
         alert(`📖 NEW CHAPTER UNLOCKED: ${newChapter.title}`);

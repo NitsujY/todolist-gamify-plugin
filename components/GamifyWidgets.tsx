@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FamilyData, LOOT_TABLE, LootItem, STORY_CHAPTERS } from '../gamifyTypes';
+import { LOOT_TABLE, STORY_CHAPTERS } from '../gamifyTypes';
+import type { FamilyData, LootItem } from '../gamifyTypes';
 
 // Simple React Component for the Dashboard
 export const LeaderboardWidget = ({ data }: { data: FamilyData }) => {
